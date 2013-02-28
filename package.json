@@ -13,4 +13,9 @@
   "keywords": ["markdown", "markup", "html"],
   "tags": ["markdown", "markup", "html"],
   "scripts": { "test": "node test", "bench": "node test --bench" }
+  "component": {
+    "scripts": {
+      "marked/index.js": "lib/marked.js"
+    }
+  }
 }

@@ -34,6 +34,19 @@ For those feeling skeptical: These benchmarks run the entire markdown test suite
 1000 times. The test suite tests every feature. It doesn't cater to specific
 aspects.
 
+node v0.8.x
+
+``` bash
+$ node test --bench
+marked completed in 3411ms.
+marked (gfm) completed in 3727ms.
+marked (pedantic) completed in 3201ms.
+robotskirt completed in 808ms.
+showdown (reuse converter) completed in 11954ms.
+showdown (new converter) completed in 17774ms.
+markdown-js completed in 17191ms.
+```
+
 ## Install
 
 ``` bash
@@ -72,6 +85,12 @@ marked has a few different switches which change behavior.
 - __tables__: Enable GFM tables. This is enabled by default. (Requires the
   `gfm` option in order to be enabled).
 - __breaks__: Enable GFM line breaks. Disabled by default.
+- __smartLists__: Use smarter list behavior than the original markdown.
+  Disabled by default. May eventually be default with the old behavior
+  moved into `pedantic`.
+- __smartypants__: Use "smart" typograhic punctuation for things like quotes
+  and dashes.
+- __langPrefix__: Set the prefix for code block classes. Defaults to `lang-`.
 
 ## Usage
 
@@ -83,6 +102,9 @@ marked.setOptions({
   breaks: false,
   pedantic: false,
   sanitize: true,
+  smartLists: true,
+  smartypants: false,
+  langPrefix: 'language-',
   highlight: function(code, lang) {
     if (lang === 'js') {
       return highlighter.javascript(code);
